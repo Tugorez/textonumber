@@ -2,7 +2,8 @@
 textonumber convert ordinal or roman numbers into their decimal representation
 
 #How to
-<package main
+```go
+package main
 import (
 	"fmt"
 	"github.com/tugorez/textonumber"
@@ -21,4 +22,5 @@ func main() {
 	}
 	fmt.Printf("The dec representation of %s is %d(as int) \"%s\"(as string)\n",
 		roman, number, snumber)
-}>
+}
+```
