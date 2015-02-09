@@ -5,41 +5,39 @@ import (
 )
 
 var outstring = []struct {
-	in       string
-	outval   string
-	outfound bool
+	in     string
+	outval string
 }{
-	{"primero", "1", true}, {"II", "2", true},
-	{"décimo", "10", true}, {"LXXXIII", "83", true},
-	{"iii", "0", false}, {"i", "0", false},
+	{"primero", "1"}, {"II", "2"},
+	{"décimo", "10"}, {"LXXXIII", "83"},
+	{"III", "3"}, {"VII", "7"},
 }
 
 var outint = []struct {
-	in       string
-	outval   int
-	outfound bool
+	in     string
+	outval int
 }{
-	{"primero", 1, true}, {"II", 2, true},
-	{"décimo", 10, true}, {"LXXXIII", 83, true},
-	{"iii", 0, false}, {"i", 0, false},
+	{"primero", 1}, {"II", 2},
+	{"décimo", 10}, {"LXXXIII", 83},
+	{"III", 3}, {"I", 1},
 }
 
 func TestTextoText(t *testing.T) {
 	for _, test := range outstring {
-		if got, found := ToString(test.in); got != test.outval ||
-			found != test.outfound {
-			t.Errorf("TextNumber:%s\nExpected: %s %t\nGot: %s %t",
-				test.in, test.outval, test.outfound, got, found)
+		if got, err := ToString(test.in); got != test.outval ||
+			err != nil {
+			t.Errorf("TextNumber:%s\nExpected: %s , Got: %s",
+				test.in, test.outval, got)
 		}
 	}
 }
 
 func TestTextoInt(t *testing.T) {
 	for _, test := range outint {
-		if got, found := ToInt(test.in); got != test.outval ||
-			found != test.outfound {
-			t.Errorf("TextNumber:%s\nExpected: %d %t\nGot: %d %t",
-				test.in, test.outval, test.outfound, got, found)
+		if got, err := ToInt(test.in); got != test.outval ||
+			err != nil {
+			t.Errorf("TextNumber:%s\nExpected: %d , Got: %d",
+				test.in, test.outval, got)
 		}
 	}
 }
