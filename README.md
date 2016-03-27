@@ -1,4 +1,7 @@
 # textonumber
+
+![travis](https://travis-ci.org/tugorez/textonumber.svg?branch=master)
+
 textonumber convert ordinal or roman numbers into their decimal representation
 
 #How to
